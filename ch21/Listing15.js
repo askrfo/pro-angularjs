@@ -1,5 +1,5 @@
 angular.module("exampleApp", ["increment", "ngResource"])
-.constant("baseUrl", "http://localhost:5500/products/")
+.constant("baseUrl", "http://localhost/products.json/")
 .controller("defaultCtrl", function ($scope, $http, $resource, baseUrl) {
 
     $scope.displayMode = "list";

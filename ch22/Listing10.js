@@ -1,5 +1,5 @@
 angular.module("exampleApp", ["increment", "ngResource", "ngRoute"])
-.constant("baseUrl", "http://localhost:5500/products/")
+.constant("baseUrl", "http://localhost/products.json/")
 .config(function ($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
