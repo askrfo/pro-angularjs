@@ -1,5 +1,5 @@
 angular.module("exampleApp", ["increment", "ngResource", "ngRoute", "ngAnimate"])
-.constant("baseUrl", "http://localhost/products.json/")
+.constant("baseUrl", "http://localhost:5500/products/")
 .factory("productsResource", function ($resource, baseUrl) {
     return $resource(baseUrl + ":id", { id: "@id" },
             { create: { method: "POST" }, save: { method: "PUT" } });

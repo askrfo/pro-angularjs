@@ -3,5 +3,5 @@ var connect = require('connect'),
 
 var app = connect();
 
-app.use(serveStatic("../angularjs"));
+app.use(serveStatic("./"));
 app.listen(5000);
