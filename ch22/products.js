@@ -9,17 +9,17 @@
     $locationProvider.html5Mode(true);
 
     $routeProvider.when("/edit/:id", {
-        templateUrl: "/editorView.html",
+        templateUrl: "./editorView.html",
         controller: "editCtrl"
     });
 
     $routeProvider.when("/create", {
-        templateUrl: "/editorView.html",
+        templateUrl: "./editorView.html",
         controller: "editCtrl"
     });
 
     $routeProvider.otherwise({
-        templateUrl: "/tableView.html",
+        templateUrl: "./tableView.html",
         controller: "tableCtrl",
         resolve: {
             data: function (productsResource) {

@@ -15,15 +15,15 @@ Tip
   4) File name extension: .json
   5) MIME type: application/json
 * http://www.uipress.com/add-json-handler-support-in-iis-7/
+
 - Deployd
-  1) dpd create sportsstore
-  2) dpd -p 5500 sportsstore\app.dpd
-  3) Dashboard Url: http://localhost:5500/dashboard/products/data/
+  1) Sports Store 생성: dpd create sportsstore
+  2) Dpd Run: dpd -p 5500 sportsstore\app.dpd
+  3) Dpd Dashboard: http://localhost:5500/dashboard/
 
 
 
 Run
-- http://localhost:5000/
-  http://localhost:5500/products
+- node run : http://localhost:5000/
 
 

@@ -1,36 +1,72 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="listApp">
 <head>
 	<title>[Book]ProAngularJS Source</title>
-	<script src="ch01/angular.js"></script>
 	<link href="ch01/bootstrap.css" rel="stylesheet" />
+	<script src="ch01/angular.js"></script>
 </head>
 <body>
 	<div class="page-header">
 		<h1>Pro AngularJS Source</small></h1>
 	</div>
 
-	<div class="panel panel-default">
+	<div class="panel panel-default" ng-controller="listCtrl">
 		<!-- Default panel contents -->
-		<div class="panel-heading">list</div>
+		<!-- <div class="panel-heading">목차</div> -->
 		<!-- <div class="panel-body">
 			<p>click</p>
 		</div> -->
-
-		<!-- List group -->
 		<ul class="list-group">
-			<li><a href="/ch01/test.html" class="list-group-item"><h4>ch1 test.html<br/><small>Getting Ready</small></h4></a></li>
-			<li><a href="/ch02/todo.html" class="list-group-item"><h4>ch2 todo.html<br/><small>First AngularJS App</small></h4></a></li>
-			<li><a href="/ch04/todo.html" class="list-group-item"><h4>ch4 todo.html<br/><small>HTML and Bootstrap CSS Primer</small></h4></a></li>
-			<li><a href="/ch05/jsdemo.html" class="list-group-item"><h4>ch5 jsdemo.html<br/><small>JavaScript Primer</small></h4></a></li>
-			<li><a href="/ch05/listing44.html" class="list-group-item"><h4>ch5 listing44.html<br/><small>angular.fromJson, angular.toJson</small></h4></a></li>
-			<li><a href="/ch06/app.html" class="list-group-item"><h4>ch6 app.html<br/><small>Sports Store: A Real Application</small></h4></a></li>
-			<li><a href="/ch07/app.html" class="list-group-item"><h4>ch7 app.html<br/><small>Sports Store: Navigation and Checkout</small></h4></a></li>
-			<li><a href="/ch08/app.html" class="list-group-item"><h4>ch8 app.html<br/><small>Sports Store: Orders and Administration</small></h4></a></li>
-			<li><a href="/ch08/admin.html" class="list-group-item"><h4>ch8 admin.html<br/><small>Sports Store: Orders and Administration</small></h4></a></li>
-		</ul>
+			<li  ng-repeat="data in lists">
+				<a href="{{data.link}}" class="list-group-item"><h4>{{data.title}}<br/><small>{{data.desc}}</small></h4></a>
+				<div class="btn-group" role="group" aria-label="examples">
+					<button type="button" class="btn btn-default" ng-repeat="ex in data.examples" ng-click="goUrl(ex)">listing{{ex.substring(2,4)}}</button>
+				</div>
+			</li>
 		</ul>
 
 	</div>
+
+	<script type="text/javascript">
+		var listApp = angular.module('listApp', []);
+		// listApp.run(function ($http) {
+		// 	$http.get("list.json").success(function (data) {
+		// 		$scope.lists = data;
+		// 	});
+		// });
+		listApp.controller('listCtrl', function($scope) {
+			$scope.lists = [{ "title": "ch01 test.html", "link": "/ch01/test.html", "desc": "Getting Ready", "examples":['0101','0103','0105']},
+							{ "title": "ch02 todo.html", "link": "/ch02/todo.html", "desc": "First AngularJS App", "examples":['0201','0202','0203','0204','0205','0206','0207','0208','0209','0210','0211','0212','0213']},
+							{ "title": "ch04 todo.html", "link": "/ch04/todo.html", "desc": "HTML and Bootstrap CSS Primer", "examples":['0401','0405','0406','0407','0408','0409','0410']},
+							{ "title": "ch05 jsdemo.html", "link": "/ch05/jsdemo.html", "desc": "JavaScript Primer", "examples":['0501','0503','0504','0505','0506','0507','0508','0509','0510','0511','0512','0513','0514','0515','0516','0517','0518','0519','0520','0521','0522','0523','0524','0525','0526','0527','0528','0529','0530','0531','0532','0533','0534','0535','0536','0537','0538','0539','0540','0541','0542','0543','0544']},
+							{ "title": "ch05 listing44.html", "link": "/ch05/listing44.html", "desc": "angular.fromJson, angular.toJson", "examples":[]},
+							{ "title": "ch06 app.html", "link": "/ch06/app.html", "desc": "Sports Store: A Real Application", "examples":['0601','0603','0604','0605','0606','0607','0609','0612']},
+							{ "title": "ch07 app.html", "link": "/ch07/app.html", "desc": "Sports Store: Navigation and Checkout", "examples":['0702','0703','0704','0707','0708','0710','0711','0712','0713','0715','0716']},
+							{ "title": "ch08 app.html", "link": "/ch08/app.html", "desc": "Sports Store: Orders and Administration", "examples":['0801','0802','0803','0804','0805','0807','0808','0809','0810','0812','0813','0814','0815','0817','0818','0819','0821','0822']},
+							{ "title": "ch09 example.html", "link": "/ch09/example.html", "desc": "The Anatomy of an AngularJS App", "examples":['0901','0902','0903','0904','0905','0906','0907','0908','0909','0910','0911','0912','0913','0916','0917']},
+							{ "title": "ch10 todo.html", "link": "/ch10/todo.html", "desc": "Using Binding and Template Directives", "examples":['1001','1002','1003','1004','1005','1006','1007','1008','1009','1010','1011','1012','1013','1014','1015','1016','1017','1018']},
+							{ "title": "ch11 todo.html", "link": "/ch11/todo.html", "desc": "Using Element and Event Directives", "examples":['1101','1102','1103','1104','1105','1106','1107','1108','1109','1110']},
+							{ "title": "ch12 todo.html", "link": "/ch12/todo.html", "desc": "Working with Forms", "examples":['1201','1202','1203','1204','1205','1206','1207','1208','1209','1210','1211','1212','1213','1214','1215','1216','1217','1218']},
+							{ "title": "ch13 todo.html", "link": "/ch13/todo.html", "desc": "Using Controllers and Scopes", "examples":['1301','1302','1303','1304','1305','1306','1307','1308','1309','1312','1313','1314','1315','1316','1317']},
+							{ "title": "ch14 todo.html", "link": "/ch14/todo.html", "desc": "Using Filters", "examples":['1401','1402','1403','1404','1405','1406','1407','1408','1409','1410','1411','1412','1413','1414','1415','1416','1417','1419','1420','1422','1424']},
+							{ "title": "ch15 todo.html", "link": "/ch15/todo.html", "desc": "Creating Custom Directives", "examples":['1501','1502','1503','1504','1505','1506','1507','1508','1509','1510','1511','1512','1513','1514','1515','1516','1517','1518','1519','1520']},
+							{ "title": "ch16 todo.html", "link": "/ch16/todo.html", "desc": "Creating Complex Directives", "examples":['1601','1602','1603','1604','1605','1606','1607','1608','1609','1610','1611','1612','1613','1614','1615','1616','1617','1618','1619','1620','1621','1622','1623','1624']},
+							{ "title": "ch17 todo.html", "link": "/ch17/todo.html", "desc": "Advanced Directives Features", "examples":['1701','1702','1703','1704','1705','1706','1707','1708','1709','1710','1711','1712']},
+							{ "title": "ch18 example.html", "link": "/ch18/example.html", "desc": "Working with Modules and Services", "examples":['1801','1803','1805','1807','1813']},
+							{ "title": "ch19 example.html", "link": "/ch19/example.html", "desc": "Services for Global Objects, Errors, and Expressions", "examples":['1901','1902','1903','1904','1905','1906','1907','1908','1911','1912','1913','1914','1915','1916','1917','1918','1919','1920','1921','1922']},
+							{ "title": "ch20 example.html", "link": "/ch20/example.html", "desc": "Services for Ajax and Promises", "examples":['2002','2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015']},
+							{ "title": "ch21 products.html", "link": "/ch21/products.html", "desc": "Services for ReST", "examples":['2101','2103','2104','2110','2112','2113','2118']},
+							{ "title": "ch22 products.html", "link": "/ch22/products.html", "desc": "Services for Views", "examples":['2201','2203','2205','2207','2209','2213']},
+							{ "title": "ch23 products.html", "link": "/ch23/products.html", "desc": "Services for Animation and Touch", "examples":['2301','2303','2304','2305']},
+							{ "title": "ch24 components.html", "link": "/ch24/components.html", "desc": "Services for Provision and Injection", "examples":['2401','2402','2403','2404','2405','2406']},
+							{ "title": "ch25 app.html", "link": "/ch25/app.html", "desc": "Unit Testing", "examples":['2501']}];
+			$scope.goUrl = function (example) {
+				if (example && example.length === 4) {
+					location.href = '/ch' + example.substring(0,2) + '/' + 'listing' + example.substring(2,4) + '.html';
+				}
+			}
+		});
+
+	</script>
 </body>
 </html>
